@@ -7,4 +7,8 @@ hidemeta: true
 #     alt: ""
 #     relative: false
 ---
-Nothing
+Nothing  
+$$
+e^{ i \pi}+1=0
+$$
+
