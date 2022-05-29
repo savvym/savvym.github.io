@@ -1,7 +1,7 @@
 baseURL: https://zhanghd.tech
 languageCode: zh-cn # en-us
 title: SavvyM's Blog
-theme: hugo-PaperMod # 主题名字，和themes文件夹下的一致
+theme: PaperMod # 主题名字，和themes文件夹下的一致
 
 enableInlineShortcodes: true
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
