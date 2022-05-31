@@ -1,13 +1,8 @@
 ---
 title: "Hello world."
-hidemeta: true
-# cover:
-#     image: ""
-#     caption: "Nothing."
-#     alt: ""
-#     relative: false
+date: 2022-05-31
 ---
-Nothing  
+Nothing at all.
 $$
 e^{ i \pi}+1=0
 $$
