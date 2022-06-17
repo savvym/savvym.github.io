@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Spring系列 on SavvyM&#39;s Blog</title>
+    <link>https://zhanghd.tech/posts/spring/</link>
+    <description>Recent content in Spring系列 on SavvyM&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://zhanghd.tech/posts/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gradle设置代理</title>
+      <link>https://zhanghd.tech/posts/spring/gradle-proxy/</link>
+      <pubDate>Fri, 17 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://zhanghd.tech/posts/spring/gradle-proxy/</guid>
+      <description>Gradle设置代理方法</description>
+    </item>
+    
+  </channel>
+</rss>
