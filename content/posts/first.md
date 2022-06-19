@@ -6,4 +6,3 @@ Nothing at all.
 $$
 e^{ i \pi}+1=0
 $$
-
