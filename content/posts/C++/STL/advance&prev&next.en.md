@@ -1,7 +1,7 @@
 ---
 title: "C++ STL advance(), prev() and next()"
 date: 2022-06-20
-summary: "C++ STL advance, prev() and next() 说明"
+summary: "C++ STL advance, prev() and next()"
 categories:
 - C++
 tags:
@@ -9,25 +9,25 @@ tags:
 - STL
 # hidemeta: true
 ---
-> 定义在头文件 `<iterator>`
+> Defined in header `<iterator>`
 
 ## std::advance
 
-增加给定的迭代器 it 以 n 个元素的步长。  
-若 n 为负，则迭代器自减。该情况下， InputIt 必须满足遗留双向迭代器 (LegacyBidirectionalIterator) 的要求，否则行为未定义。
+Increments given iterator it by n elements.  
+If n is negative, the iterator is decremented. In this case, InputIt must meet the requirements of *LegacyBidirectionalIterator*, otherwise the behavior is undefined.
 
-### 参数
-- **`it`** :	要前进的迭代器
-- **`n`**   :	it 要前进的元素数
+### Parameters
+- **`it`** :	iterator to be advanced
+- **`n`**   :	number of elements it should be advanced
 
-### 返回值
-(无)
+### Return value
+(none)
 
-### 复杂度
-线性。  
-然而，若 InputIt 额外满足遗留随机访问迭代器 (LegacyRandomAccessIterator) 的要求，则复杂度是常数。
+### Complexity
+Linear.  
+However, if InputIt additionally meets the requirements of *LegacyRandomAccessIterator*, complexity is constant.
 
-### 示例
+### Example
 Code:  
 ```C++
 #include <iostream>
@@ -53,18 +53,18 @@ Output:
 ```
 
 ## std::prev
-### 参数
-- **`it`** :	迭代器
-- **`n`**   :	it 要被减少的次数
+### Parameters
+- **`it`** :	an iterator
+- **`n`**   :	number of elements it should be descended
 
-### 返回值
-返回迭代器 it 的第 n 个前驱。 
+### Return value
+The nth predecessor of iterator it.
 
-### 复杂度
-线性。  
-然而，若 BidirIt 还满足遗留随机访问迭代器 (LegacyRandomAccessIterator) 的要求，则复杂度为常数。
+### Complexity
+Linear.  
+However, if InputIt additionally meets the requirements of *LegacyRandomAccessIterator*, complexity is constant.
 
-### 示例
+### Example
 Code:  
 ```C++
 #include <iostream>
@@ -91,18 +91,18 @@ Output:
 ```
 
 ## std::next
-### 参数
-- **`it`** :	迭代器
-- **`n`**   :	要前进的元素数
+### Parameters
+- **`it`** :	an iterator
+- **`n`**   :	number of elements to advance
 
-### 返回值
-迭代器 it 的第 n 个后继。
+### Return value
+The nth successor of iterator it.
 
-### 复杂度
-线性。  
-然而，若 InputIt 还满足遗留随机访问迭代器 (LegacyRandomAccessIterator) 的要求，则复杂度为常数。
+### Complexity
+Linear.  
+However, if InputIt additionally meets the requirements of *LegacyRandomAccessIterator*, complexity is constant.
 
-### 示例
+### Example
 Code:  
 ```C++
 #include <iostream>
