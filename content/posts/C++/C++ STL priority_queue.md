@@ -1,5 +1,5 @@
 ---
-title: "C++ STL priority_queue使用技巧"
+title: "[C++]priority_queue使用技巧"
 date: 2022-06-25
 summary: "C++ STL priority_queue使用技巧"
 categories:

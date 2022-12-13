@@ -1,5 +1,5 @@
 ---
-title: "wsl配置使用本地clash代理"
+title: "[linux]wsl配置使用本地clash代理"
 date: 2022-11-28
 summary: "Set clash proxy for wsl"
 categories:

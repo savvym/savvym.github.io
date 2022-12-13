@@ -1,7 +1,7 @@
 ---
-title: "Set proxy for Gradle"
+title: "[Java]Gradle设置代理"
 date: 2022-06-17
-summary: "Set proxy for Gradle"
+summary: "Gradle设置代理方法"
 categories:
 - Spring
 tags:
@@ -9,11 +9,11 @@ tags:
 # hidemeta: true
 ---
 
-## Global Proxy
-Open or create a new file `gradle.properties` from `C:\Users\YOURNAME\.gradle`  
-Add follow contents：
+## 全局代理
+在`C:\Users\用户\.gradle`文件夹下打开或新建`gradle.properties`
+增加内容：
 ```properties
-# gradle properties
+# gradle 代理配置
 systemProp.socks.proxyHost=xxx
 systemProp.socks.proxyPort=xxx
 systemProp.socks.proxyUser=xxx
@@ -30,11 +30,12 @@ systemProp.https.proxyUser=xxx
 systemProp.https.proxyPassword=xxx
 ```
 
-## Project Proxy
-In project, create `gradle.properties` in the same directory as `build.gradle` file  
-Add：  
+## 项目代理
+在项目`build.gradle`同级目录下新建`gradle.properties`  
+增加内容：  
+分别配置socks、http、https的代理IP、代理端口、用户名和密码：
 ```properties
-# gradle properties
+# gradle 代理配置
 systemProp.socks.proxyHost=xxx
 systemProp.socks.proxyPort=xxx
 systemProp.socks.proxyUser=xxx
@@ -51,7 +52,7 @@ systemProp.https.proxyUser=xxx
 systemProp.https.proxyPassword=xxx
 ```
 ---
-Here is my case: Using Clash as the proxy ,both socks and http default port 7890：  
+例如我用的clash代理，默认socks和http端口均是7890，没有密码,我的配置文件为：  
 ```properties
 systemProp.socks.proxyHost=127.0.0.1
 systemProp.socks.proxyPort=7890

@@ -17,36 +17,6 @@ hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
 
 [languages]
-  [languages.en]
-    weight = 1
-    title = "Leave Me Alone"
-    languageCode = "en"
-    languageName = "English"
-    [[languages.en.menu.main]]
-      weight = 1
-      identifier = "posts"
-      pre = ""
-      post = ""
-      name = "Posts"
-      url = "/posts/"
-      title = ""
-    [[languages.en.menu.main]]
-      weight = 2
-      identifier = "tags"
-      pre = ""
-      post = ""
-      name = "Tags"
-      url = "/tags/"
-      title = ""
-    [[languages.en.menu.main]]
-      weight = 3
-      identifier = "categories"
-      pre = ""
-      post = ""
-      name = "Categories"
-      url = "/categories/"
-      title = ""
-
   [languages.zh-cn]
     weight = 2
     title = "Leave Me ALone"

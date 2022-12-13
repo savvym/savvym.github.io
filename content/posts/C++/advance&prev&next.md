@@ -1,5 +1,5 @@
 ---
-title: "C++ STL advance(), prev() and next()"
+title: "[C++]advance(), prev() and next()"
 date: 2022-06-20
 summary: "C++ STL advance, prev() and next() 说明"
 categories:

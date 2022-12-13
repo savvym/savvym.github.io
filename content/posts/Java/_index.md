@@ -1,5 +1,5 @@
 ---
-title: "Algorithm"
+title: "Java"
 # description: ""
 hidemeta: true
 ---
