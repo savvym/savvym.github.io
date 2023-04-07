@@ -1,5 +1,5 @@
 ---
-title: "Linux"
+title: "Language"
 # description: ""
 hidemeta: true
 ---

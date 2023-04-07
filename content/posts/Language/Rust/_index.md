@@ -1,5 +1,5 @@
 ---
-title: "Linux"
+title: "Rust"
 # description: ""
 hidemeta: true
 ---
