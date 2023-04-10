@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Algorithm - 标签 - Leave Me ALone</title>
+        <link>https://zhanghd.tech/tags/algorithm/</link>
+        <description>Algorithm - 标签 - Leave Me ALone</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>savvy.chn@gmail.com (SavvyM)</managingEditor>
+            <webMaster>savvy.chn@gmail.com (SavvyM)</webMaster><lastBuildDate>Mon, 13 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zhanghd.tech/tags/algorithm/" rel="self" type="application/rss+xml" /><item>
+    <title>[算法刷题]后缀数组Suffix Array</title>
+    <link>https://zhanghd.tech/suffix_array/</link>
+    <pubDate>Mon, 13 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>SavvyM</author>
+    <guid>https://zhanghd.tech/suffix_array/</guid>
+    <description><![CDATA[后缀数组及其应用]]></description>
+</item>
+<item>
+    <title>[算法刷题]C&#43;&#43;输入String生成二叉树</title>
+    <link>https://zhanghd.tech/string_to_tree/</link>
+    <pubDate>Thu, 06 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>SavvyM</author>
+    <guid>https://zhanghd.tech/string_to_tree/</guid>
+    <description><![CDATA[C++ 输入String生成二叉树]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有Java - Leave Me ALone</title>
+        <link>https://zhanghd.tech/posts/language/java/</link>
+        <description>所有Java | Leave Me ALone</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>savvy.chn@gmail.com (SavvyM)</managingEditor>
+            <webMaster>savvy.chn@gmail.com (SavvyM)</webMaster><lastBuildDate>Fri, 17 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zhanghd.tech/posts/language/java/" rel="self" type="application/rss+xml" /><item>
+    <title>[Java]Gradle设置代理</title>
+    <link>https://zhanghd.tech/gradle-proxy/</link>
+    <pubDate>Fri, 17 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>SavvyM</author>
+    <guid>https://zhanghd.tech/gradle-proxy/</guid>
+    <description><![CDATA[Gradle设置代理方法]]></description>
+</item>
+</channel>
+</rss>

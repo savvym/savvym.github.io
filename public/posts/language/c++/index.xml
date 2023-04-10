@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有C&#43;&#43; - Leave Me ALone</title>
+        <link>https://zhanghd.tech/posts/language/c&#43;&#43;/</link>
+        <description>所有C&#43;&#43; | Leave Me ALone</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>savvy.chn@gmail.com (SavvyM)</managingEditor>
+            <webMaster>savvy.chn@gmail.com (SavvyM)</webMaster><lastBuildDate>Sat, 25 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zhanghd.tech/posts/language/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>[C&#43;&#43;]priority_queue使用技巧</title>
+    <link>https://zhanghd.tech/c-stl-priority_queue/</link>
+    <pubDate>Sat, 25 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>SavvyM</author>
+    <guid>https://zhanghd.tech/c-stl-priority_queue/</guid>
+    <description><![CDATA[C++ STL priority_queue使用技巧]]></description>
+</item>
+<item>
+    <title>[C&#43;&#43;]advance(), prev() and next()</title>
+    <link>https://zhanghd.tech/advanceprevnext/</link>
+    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>SavvyM</author>
+    <guid>https://zhanghd.tech/advanceprevnext/</guid>
+    <description><![CDATA[C++ STL advance, prev() and next() 说明]]></description>
+</item>
+</channel>
+</rss>

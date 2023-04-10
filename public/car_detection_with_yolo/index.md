@@ -1,13 +1,5 @@
----
-title: "Car detection with YOLO"
-date: 2023-04-10
-summary: "Convolutional Neural Networks Programming Assignments YOLO"
-categories:
-- Paper Read
-tags:
-# hidemeta: true
-markup: HTML
----
+# Car detection with YOLO
+
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
@@ -16459,4 +16451,5 @@ jp-needs-light-background
 
 
 </html>
+
 
