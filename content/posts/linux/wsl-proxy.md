@@ -3,7 +3,7 @@ title: "[linux]wsl配置使用本地clash代理"
 date: 2022-11-28
 summary: "Set clash proxy for wsl"
 categories:
-- linux
+- Linux
 tags:
 - linux
 - proxy
