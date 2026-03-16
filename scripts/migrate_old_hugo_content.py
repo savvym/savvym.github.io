@@ -14,6 +14,9 @@ NEW_POSTS = PROJECT_ROOT / "src" / "content" / "blog"
 NB_IMAGES_SRC = OLD_ROOT / "static" / "nb_images"
 NB_IMAGES_DEST = PROJECT_ROOT / "public" / "nb_images"
 LLMS_FILE = PROJECT_ROOT / "public" / "llms.txt"
+SKIP_POSTS = {
+    Path("Paper/car_detection_with_yolo.md"),
+}
 
 
 def split_frontmatter(text: str) -> tuple[dict[str, object], str]:
@@ -84,6 +87,8 @@ def build_slug(path: Path) -> str:
 def plain_text(value: str) -> str:
     text = re.sub(r"(?is)<script.*?</script>", " ", value)
     text = re.sub(r"(?is)<style.*?</style>", " ", text)
+    text = re.sub(r"\$\$([\s\S]*?)\$\$", r" \1 ", text)
+    text = re.sub(r"\$([^\n$]+)\$", r" \1 ", text)
     text = re.sub(r"```[\s\S]*?```", " ", text)
     text = re.sub(r"`([^`]+)`", r"\1", text)
     text = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", r"\1", text)
@@ -95,6 +100,10 @@ def plain_text(value: str) -> str:
 
 def markdown_text(value: str) -> str:
     return value.replace("[", r"\[").replace("]", r"\]")
+
+
+def yaml_quote(value: str) -> str:
+    return "'" + value.replace("'", "''") + "'"
 
 
 def normalize_code_fences(content: str) -> str:
@@ -111,7 +120,10 @@ def normalize_code_fences(content: str) -> str:
         mapped = aliases.get(language, aliases.get(language.lower(), language))
         return f"```{mapped}\n"
 
-    return re.sub(r"```([A-Za-z0-9+#-]+)\n", replace, content)
+    normalized = re.sub(r"```[ \t]*([A-Za-z0-9+#-]+)[ \t]*\n", replace, content)
+    if normalized.count("```") % 2 == 1:
+        normalized = f"{normalized.rstrip()}\n```\n"
+    return normalized
 
 
 def extract_html_content(body: str) -> str:
@@ -147,6 +159,8 @@ def collect_posts() -> list[dict[str, object]]:
             continue
 
         relative = source.relative_to(OLD_POSTS)
+        if relative in SKIP_POSTS:
+            continue
         frontmatter, body = split_frontmatter(source.read_text(encoding="utf-8"))
 
         title = str(frontmatter.get("title", source.stem))
@@ -193,8 +207,8 @@ def write_posts(posts: list[dict[str, object]]) -> None:
     for post in posts:
         lines = [
             "---",
-            f'title: "{post["title"]}"',
-            f'description: "{str(post["description"]).replace(chr(34), chr(92) + chr(34))}"',
+            f"title: {yaml_quote(str(post['title']))}",
+            f"description: {yaml_quote(str(post['description']))}",
             f'pubDate: "{post["date"]}"',
         ]
 
@@ -211,10 +225,11 @@ def write_posts(posts: list[dict[str, object]]) -> None:
         destination.write_text("\n".join(lines), encoding="utf-8")
 
 
-def sync_assets() -> None:
+def sync_assets(posts: list[dict[str, object]]) -> None:
     if NB_IMAGES_DEST.exists():
         shutil.rmtree(NB_IMAGES_DEST)
-    if NB_IMAGES_SRC.exists():
+    needs_nb_images = any("/nb_images/" in str(post["content"]) for post in posts)
+    if NB_IMAGES_SRC.exists() and needs_nb_images:
         shutil.copytree(NB_IMAGES_SRC, NB_IMAGES_DEST)
 
 
@@ -246,7 +261,7 @@ def write_llms(posts: list[dict[str, object]]) -> None:
 def main() -> None:
     posts = collect_posts()
     write_posts(posts)
-    sync_assets()
+    sync_assets(posts)
     write_llms(posts)
     print(f"Migrated {len(posts)} posts.")
 

@@ -1,6 +1,6 @@
 ---
-title: "[C++]advance(), prev() and next()"
-description: "C++ STL advance, prev() and next() 说明"
+title: '[C++]advance(), prev() and next()'
+description: 'C++ STL advance, prev() and next() 说明'
 pubDate: "2022-06-20"
 tags:
   - "C++"
@@ -46,7 +46,7 @@ int main()
 }
 ```
 Output:  
-``` cmd
+```cmd
 4 1
 ```
 
@@ -83,7 +83,7 @@ int main()
 }
 ```
 Output:  
-``` cmd
+```cmd
 1
 4
 ```
@@ -121,7 +121,7 @@ int main()
 }
 ```
 Output:  
-``` cmd
+```cmd
 4 6
  5
 ```

@@ -1,6 +1,6 @@
 ---
-title: "[Golang]优雅实现「业务/权限」检查"
-description: "实习代码总结，权限控制检查业务代码设计"
+title: '[Golang]优雅实现「业务/权限」检查'
+description: '实习代码总结，权限控制检查业务代码设计'
 pubDate: "2023-02-20"
 tags:
   - "Golang"

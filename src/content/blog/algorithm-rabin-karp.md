@@ -1,6 +1,6 @@
 ---
-title: "[算法刷题]滚动哈希Rabin-Karp算法"
-description: "滚动哈希及其应用"
+title: '[算法刷题]滚动哈希Rabin-Karp算法'
+description: '滚动哈希及其应用'
 pubDate: "2023-04-15"
 tags:
   - "C++"

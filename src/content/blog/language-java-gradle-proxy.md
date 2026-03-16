@@ -1,6 +1,6 @@
 ---
-title: "[Java]Gradle设置代理"
-description: "Gradle设置代理方法"
+title: '[Java]Gradle设置代理'
+description: 'Gradle设置代理方法'
 pubDate: "2022-06-17"
 tags:
   - "Spring Boot"

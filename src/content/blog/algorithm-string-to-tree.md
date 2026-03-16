@@ -1,6 +1,6 @@
 ---
-title: "[算法刷题]C++输入String生成二叉树"
-description: "C++ 输入String生成二叉树"
+title: '[算法刷题]C++输入String生成二叉树'
+description: 'C++ 输入String生成二叉树'
 pubDate: "2022-10-06"
 tags:
   - "C++"
@@ -98,3 +98,4 @@ string integerVectorToString(vector<int> list, int length = -1) {
     }
     return "[" + result.substr(0, result.length() - 2) + "]";
 }
+```

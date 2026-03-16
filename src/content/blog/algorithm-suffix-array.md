@@ -1,6 +1,6 @@
 ---
-title: "[算法刷题]后缀数组Suffix Array"
-description: "后缀数组及其应用"
+title: '[算法刷题]后缀数组Suffix Array'
+description: '后缀数组及其应用'
 pubDate: "2023-03-13"
 tags:
   - "C++"
@@ -97,7 +97,7 @@ struct SuffixArray{
 
 ```
 ### 3DC算法 O(N)
-``` CPP
+```cpp
 // TODO
 ```
 ### SA-IS O(N)
@@ -284,7 +284,7 @@ public:
 ## 后缀数组相关题目
 [LeetCode 1923.最长公共子路径](https://leetcode.cn/problems/longest-common-subpath/description/)  
 1. 主代码（后缀数组为倍增算法模板）
-```cpp 
+```cpp
 class Solution {
     //用counter来计数覆盖的path数量
     //为何不用bool数组或者 bitset: 初始化的时间复杂度会超标
