@@ -25,6 +25,19 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString(
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      (() => {
+        const storageKey = "savvym-theme";
+        try {
+          const stored = window.localStorage.getItem(storageKey);
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.dataset.theme = stored;
+          }
+        } catch {
+          // Ignore storage access failures and fall back to system preference.
+        }
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />

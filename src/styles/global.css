@@ -33,11 +33,23 @@
   --selection-bg: #c4e817;
   --selection-text: #1e1e1e;
   --label-color: var(--text-light);
-  color-scheme: light dark;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --text: #ffffff;
+  --text-light: #b8b8b8;
+  --link: #6baaff;
+  --bg: #1a1a1a;
+  --code-bg: #222224;
+  --border: #e0e0e044;
+  --border-dotted: #e0e0e044;
+  --tag-border: #e0e0e088;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --text: #ffffff;
     --text-light: #b8b8b8;
     --link: #6baaff;
@@ -46,6 +58,18 @@
     --border: #e0e0e044;
     --border-dotted: #e0e0e044;
     --tag-border: #e0e0e088;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --selection-bg: #c4e817;
+    --selection-text: #1e1e1e;
   }
 }
 
@@ -350,6 +374,15 @@ button.tag:hover {
   border-radius: 3px;
   border-bottom: 0;
   cursor: pointer;
+}
+
+.theme-toggle {
+  min-width: 7.5rem;
+  justify-content: center;
+}
+
+.theme-toggle[data-theme-current="dark"] {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
 .tagline-mobile {

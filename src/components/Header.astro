@@ -20,6 +20,9 @@ import { getTagPath } from "../lib/posts";
           {link.label}
         </a>
       ))}
+      <button class="nav-btn theme-toggle" type="button" data-theme-toggle data-theme-current="light">
+        theme: light
+      </button>
     </div>
   </nav>
   {SITE_TAGLINE && (
@@ -38,3 +41,66 @@ import { getTagPath } from "../lib/posts";
     </div>
   )}
 </header>
+
+<script is:inline>
+  (() => {
+    const storageKey = "savvym-theme";
+    const toggle = document.querySelector("[data-theme-toggle]");
+    if (!(toggle instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const getStoredTheme = () => {
+      try {
+        const stored = window.localStorage.getItem(storageKey);
+        return stored === "light" || stored === "dark" ? stored : null;
+      } catch {
+        return null;
+      }
+    };
+
+    const setStoredTheme = (theme) => {
+      try {
+        window.localStorage.setItem(storageKey, theme);
+      } catch {
+        // Ignore storage access failures and keep the theme for the current session only.
+      }
+    };
+
+    const getTheme = () => {
+      const stored = getStoredTheme();
+      if (stored) {
+        return stored;
+      }
+
+      return mediaQuery.matches ? "dark" : "light";
+    };
+
+    const applyLabel = (theme) => {
+      const nextTheme = theme === "dark" ? "light" : "dark";
+      toggle.dataset.themeCurrent = theme;
+      toggle.textContent = `theme: ${theme}`;
+      toggle.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+      toggle.title = `Switch to ${nextTheme} mode`;
+    };
+
+    const syncFromSystem = () => {
+      if (!getStoredTheme()) {
+        applyLabel(getTheme());
+      }
+    };
+
+    applyLabel(getTheme());
+
+    toggle.addEventListener("click", () => {
+      const currentTheme = getTheme();
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      setStoredTheme(nextTheme);
+      document.documentElement.dataset.theme = nextTheme;
+      applyLabel(nextTheme);
+    });
+
+    mediaQuery.addEventListener("change", syncFromSystem);
+  })();
+</script>
