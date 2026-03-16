@@ -85,20 +85,6 @@ export function excerptFromMarkdown(markdown: string, maxLength = 320) {
   return `${plainText.slice(0, maxLength).trimEnd()}...`;
 }
 
-export function shouldRenderRichExcerpt(markdown: string) {
-  const trimmed = markdown.trim();
-  if (!trimmed) {
-    return false;
-  }
-
-  const isDisplayMathOnly =
-    /^\$\$[\s\S]*\$\$$/.test(trimmed) && trimmed.replace(/\$\$[\s\S]*\$\$/g, "").trim() === "";
-  const isShortMathNote =
-    trimmed.length <= 240 && /(^|\s)\$[^$\n]+\$($|\s)|\$\$[\s\S]*?\$\$/.test(trimmed);
-
-  return isDisplayMathOnly || isShortMathNote;
-}
-
 export function findTagBySlug(posts: BlogPost[], slug: string) {
   return getAllTags(posts).find((tag) => slugifyTag(tag) === slug);
 }

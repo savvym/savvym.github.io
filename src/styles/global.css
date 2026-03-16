@@ -417,7 +417,10 @@ button.tag:hover {
 }
 
 .post-excerpt.rich-excerpt {
+  position: relative;
   max-width: 70ch;
+  max-height: 12rem;
+  overflow: hidden;
 }
 
 .post-excerpt.rich-excerpt > :first-child {
@@ -430,6 +433,39 @@ button.tag:hover {
 
 .post-excerpt.rich-excerpt .katex-display {
   margin: 0.35rem 0 0.5rem;
+}
+
+.post-excerpt.rich-excerpt :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0 0 0.5rem;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.post-excerpt.rich-excerpt :is(p, ul, ol, blockquote) {
+  margin: 0 0 0.65rem;
+}
+
+.post-excerpt.rich-excerpt :is(ul, ol) {
+  padding-left: 1.2rem;
+}
+
+.post-excerpt.rich-excerpt blockquote {
+  margin-left: 0;
+  padding-left: 0.85rem;
+}
+
+.post-excerpt.rich-excerpt pre,
+.post-excerpt.rich-excerpt table,
+.post-excerpt.rich-excerpt img {
+  display: none;
+}
+
+.post-excerpt.rich-excerpt a {
+  border-bottom-style: dotted;
 }
 
 .post-read-more {

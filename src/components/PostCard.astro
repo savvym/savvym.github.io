@@ -1,13 +1,7 @@
 ---
-import { render } from "astro:content";
 import type { BlogPost } from "../lib/posts";
-import {
-  excerptFromMarkdown,
-  formatDate,
-  getTagPath,
-  readingTime,
-  shouldRenderRichExcerpt
-} from "../lib/posts";
+import { renderExcerptHtml } from "../lib/markdown";
+import { excerptFromMarkdown, formatDate, getTagPath, readingTime } from "../lib/posts";
 import { withBase } from "../lib/site";
 
 interface Props {
@@ -16,9 +10,7 @@ interface Props {
 
 const { post } = Astro.props;
 const excerpt = excerptFromMarkdown(post.body);
-const richExcerpt = shouldRenderRichExcerpt(post.body);
-const renderedPost = richExcerpt ? await render(post) : null;
-const RichExcerpt = renderedPost?.Content;
+const { html: excerptHtml } = await renderExcerptHtml(post.body);
 ---
 
 <article class="post-preview" data-post-slug={post.slug}>
@@ -36,10 +28,8 @@ const RichExcerpt = renderedPost?.Content;
   <h2 class="post-title">
     <a href={withBase(`/blog/${post.slug}/`)}>{post.data.title}</a>
   </h2>
-  {RichExcerpt ? (
-    <div class="post-excerpt rich-excerpt">
-      <RichExcerpt />
-    </div>
+  {excerptHtml ? (
+    <div class="post-excerpt rich-excerpt" set:html={excerptHtml} />
   ) : (
     <p class="post-excerpt truncated">{excerpt}</p>
   )}
