@@ -1,0 +1,149 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatDate,
+  getRelatedPosts,
+  getTagPath,
+  readingTime,
+  sortPosts
+} from "../../lib/posts";
+import { withBase } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const posts = sortPosts(await getCollection("blog"));
+const related = getRelatedPosts(posts, post);
+const currentIndex = posts.findIndex((entry) => entry.id === post.id);
+const previous = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+const next = currentIndex > 0 ? posts[currentIndex - 1] : null;
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  publishedTime={post.data.pubDate.toISOString()}
+>
+  <article class="article-shell">
+    <div class="section-label">
+      <span>/</span>
+      Article
+    </div>
+
+    <header class="article-header">
+      <h1>{post.data.title}</h1>
+      <div class="section-label">
+        <span>/</span>
+        Metadata
+      </div>
+      <div class="meta-inline">
+        <span class="post-date">{formatDate(post.data.pubDate)}</span>
+        <span class="post-reading-time">{readingTime(post.body)} min read</span>
+        <div class="post-tags">
+          {post.data.tags.map((tag) => (
+            <a class="tag" href={withBase(getTagPath(tag))}>
+              {tag}
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <div class="section-label">
+      <span>/</span>
+      Actions
+    </div>
+    <div class="actions-row">
+      <button type="button" class="share-button tag" id="share-post">Share</button>
+    </div>
+
+    <div class="article-content">
+      <Content />
+    </div>
+
+    {related.length > 0 && (
+      <section>
+        <div class="section-label">
+          <span>/</span>
+          Related
+        </div>
+        <div class="related-list">
+          {related.map((entry) => (
+            <a class="related-item" href={withBase(`/blog/${entry.slug}/`)}>
+              {entry.data.title}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {(previous || next) && (
+      <section>
+        <div class="section-label">
+          <span>/</span>
+          Navigation
+        </div>
+        <div class="nav-links">
+          {previous ? (
+            <a class="nav-link" href={withBase(`/blog/${previous.slug}/`)}>
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">{previous.data.title}</span>
+            </a>
+          ) : (
+            <div class="nav-link"></div>
+          )}
+
+          {next ? (
+            <a class="nav-link next" href={withBase(`/blog/${next.slug}/`)}>
+              <span class="nav-label">Next</span>
+              <span class="nav-title">{next.data.title}</span>
+            </a>
+          ) : (
+            <div class="nav-link"></div>
+          )}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <script is:inline>
+    (() => {
+      const button = document.getElementById("share-post");
+      if (!button) {
+        return;
+      }
+
+      button.addEventListener("click", async () => {
+        const url = window.location.href;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: document.title, url });
+            return;
+          } catch {
+            return;
+          }
+        }
+
+        try {
+          await navigator.clipboard.writeText(url);
+          button.textContent = "Copied";
+          window.setTimeout(() => {
+            button.textContent = "Share";
+          }, 1200);
+        } catch {
+          window.prompt("Copy this link", url);
+        }
+      });
+    })();
+  </script>
+</BaseLayout>

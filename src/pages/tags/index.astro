@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllTags, getTagPath, sortPosts } from "../../lib/posts";
+import { SITE_TITLE, withBase } from "../../lib/site";
+
+const posts = sortPosts(await getCollection("blog"));
+const tags = getAllTags(posts).map((tag) => ({
+  tag,
+  count: posts.filter((post) => post.data.tags.includes(tag)).length
+}));
+---
+
+<BaseLayout
+  title={`Tags - ${SITE_TITLE}`}
+  description={`Browse all topics on ${SITE_TITLE}.`}
+>
+  <div class="section-label">
+    <span>/</span>
+    Tags
+  </div>
+  <div class="tag-grid">
+    {tags.map(({ tag, count }) => (
+      <a class="tag-link" href={withBase(getTagPath(tag))}>
+        <strong>{tag}</strong> <span class="meta-note">({count})</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

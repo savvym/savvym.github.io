@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  SITE_AUTHOR,
+  SITE_DESCRIPTION,
+  SITE_GITHUB,
+  SITE_LINKEDIN,
+  SITE_TITLE
+} from "../lib/site";
+---
+
+<BaseLayout title={`About - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+  <div class="section-label">
+    <span>/</span>
+    About
+  </div>
+  <div class="about-copy">
+    <h1>About</h1>
+    <p>
+      Hi, I'm {SITE_AUTHOR}. I write about algorithms, programming languages,
+      Linux, and paper notes on this blog.
+    </p>
+    <p>
+      This site keeps the content from my older blog, rebuilt into the current
+      design and Markdown workflow.
+    </p>
+    <p>
+      <img
+        src="https://leetcard.jacoblin.cool/savvym?theme=light&font=M%20PLUS%201&ext=activity&site=cn"
+        alt="SavvyM LeetCode stats"
+        loading="lazy"
+      />
+    </p>
+    <p>
+      <a href={SITE_GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+      {SITE_LINKEDIN && (
+        <>
+          {" · "}
+          <a href={SITE_LINKEDIN} target="_blank" rel="noreferrer">LinkedIn</a>
+        </>
+      )}
+    </p>
+  </div>
+</BaseLayout>

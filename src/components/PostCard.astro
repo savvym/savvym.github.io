@@ -1,0 +1,33 @@
+---
+import type { BlogPost } from "../lib/posts";
+import { excerptFromMarkdown, formatDate, getTagPath, readingTime } from "../lib/posts";
+import { withBase } from "../lib/site";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const excerpt = excerptFromMarkdown(post.body);
+---
+
+<article class="post-preview" data-post-slug={post.slug}>
+  <div class="post-meta">
+    <span class="post-date">{formatDate(post.data.pubDate)}</span>
+        <span class="post-reading-time">{readingTime(post.body)} min read</span>
+        <div class="post-tags">
+          {post.data.tags.map((tag) => (
+            <a class="tag" href={withBase(getTagPath(tag))}>
+              {tag}
+            </a>
+          ))}
+    </div>
+  </div>
+  <h2 class="post-title">
+    <a href={withBase(`/blog/${post.slug}/`)}>{post.data.title}</a>
+  </h2>
+  <p class="post-excerpt truncated">{excerpt}</p>
+  <div class="post-read-more">
+    <a href={withBase(`/blog/${post.slug}/`)}>Read more →</a>
+  </div>
+</article>

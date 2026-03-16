@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    .slash { fill: #22863a; }
+    .letter { fill: #1a1a1a; }
+    @media (prefers-color-scheme: dark) {
+      .slash { fill: #7ee787; }
+      .letter { fill: #e6e6e6; }
+    }
+  </style>
+
+  <text x="16" y="26" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Monaco, 'Cascadia Mono', Consolas, monospace" font-size="28" font-weight="700">
+    <tspan class="slash">/</tspan><tspan class="letter">m</tspan>
+  </text>
+</svg>

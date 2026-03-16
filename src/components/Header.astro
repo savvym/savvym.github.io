@@ -1,0 +1,40 @@
+---
+import { HEADER_TOPICS, NAV_LINKS, SITE_TAGLINE, SITE_TITLE, withBase } from "../lib/site";
+import { getTagPath } from "../lib/posts";
+---
+
+<header class="site-header">
+  <nav class="site-nav">
+    <div class="nav-left">
+      <a class="site-title" href={withBase("/")}>{SITE_TITLE}</a>
+      {SITE_TAGLINE && <span class="tagline desktop-only">{SITE_TAGLINE}</span>}
+    </div>
+    <div class="nav-right">
+      {NAV_LINKS.map((link) => (
+        <a
+          class="nav-btn"
+          href={withBase(link.href)}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noreferrer" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+  {SITE_TAGLINE && (
+    <div class="tagline-mobile">
+      <span class="tagline">{SITE_TAGLINE}</span>
+    </div>
+  )}
+  {HEADER_TOPICS.length > 0 && (
+    <div class="topics">
+      <span class="topics-label">Read more about:</span>
+      {HEADER_TOPICS.map((topic) => (
+        <a class="tag" href={withBase(getTagPath(topic))}>
+          {topic}
+        </a>
+      ))}
+    </div>
+  )}
+</header>

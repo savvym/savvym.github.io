@@ -1,0 +1,28 @@
+---
+import { FOOTER_LINKS, SITE_AUTHOR, withBase } from "../lib/site";
+---
+
+<footer class="site-footer">
+  <div class="section-label">
+    <span>/</span>
+    Footer
+  </div>
+  <div class="footer-content">
+    <div class="footer-left">
+      <span class="author-name">{SITE_AUTHOR}</span>
+      <span class="copyright">© {new Date().getFullYear()}</span>
+    </div>
+    <div class="footer-links">
+      {FOOTER_LINKS.map((link) => (
+        <a
+          class="nav-btn"
+          href={withBase(link.href)}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noreferrer" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>

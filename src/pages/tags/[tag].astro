@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { findTagBySlug, slugifyTag, sortPosts } from "../../lib/posts";
+import { SITE_TITLE } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag: slugifyTag(tag) },
+    props: { tag }
+  }));
+}
+
+const allPosts = await getCollection("blog");
+const { tag: propTag } = Astro.props;
+const slug = Astro.params.tag ?? "";
+const tag = propTag ?? findTagBySlug(allPosts, slug) ?? slug;
+const posts = sortPosts(
+  allPosts.filter((post) => post.data.tags.includes(tag))
+);
+---
+
+<BaseLayout
+  title={`Tag: ${tag} - ${SITE_TITLE}`}
+  description={`Posts filed under ${tag}.`}
+>
+  <div class="section-label">
+    <span>/</span>
+    Tag
+  </div>
+  <p class="post-count">{posts.length} post{posts.length === 1 ? "" : "s"} in {tag}</p>
+  <div class="post-list">
+    {posts.map((post) => <PostCard post={post} />)}
+  </div>
+</BaseLayout>
