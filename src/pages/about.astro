@@ -5,9 +5,34 @@ import {
   SITE_DESCRIPTION,
   SITE_GITHUB,
   SITE_LEETCODE,
+  SITE_LEETCODE_STATS,
   SITE_LINKEDIN,
   SITE_TITLE
 } from "../lib/site";
+
+const leetcodeBreakdown = [
+  {
+    label: "Easy",
+    solved: SITE_LEETCODE_STATS.easy.solved,
+    total: SITE_LEETCODE_STATS.easy.total,
+    tone: "easy"
+  },
+  {
+    label: "Medium",
+    solved: SITE_LEETCODE_STATS.medium.solved,
+    total: SITE_LEETCODE_STATS.medium.total,
+    tone: "medium"
+  },
+  {
+    label: "Hard",
+    solved: SITE_LEETCODE_STATS.hard.solved,
+    total: SITE_LEETCODE_STATS.hard.total,
+    tone: "hard"
+  }
+].map((entry) => ({
+  ...entry,
+  percent: Math.min(100, Math.round((entry.solved / entry.total) * 1000) / 10)
+}));
 ---
 
 <BaseLayout title={`About - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
@@ -21,10 +46,6 @@ import {
       Hi, I'm {SITE_AUTHOR}. I write about algorithms, programming languages,
       Linux, and paper notes on this blog.
     </p>
-    <p>
-      This site keeps the content from my older blog, rebuilt into the current
-      design and Markdown workflow.
-    </p>
     <div class="profile-card">
       <div class="profile-card-label">Coding Profile</div>
       <div class="profile-card-header">
@@ -33,6 +54,23 @@ import {
           <p class="profile-card-handle">@savvym</p>
         </div>
         <div class="profile-card-mark" aria-hidden="true">LC</div>
+      </div>
+      <div class="profile-card-total">
+        <div class="profile-card-total-value">{SITE_LEETCODE_STATS.totalSolved}</div>
+        <div class="profile-card-total-label">Problems Solved</div>
+      </div>
+      <div class="profile-card-stats">
+        {leetcodeBreakdown.map((entry) => (
+          <div class={`profile-card-stat ${entry.tone}`}>
+            <div class="profile-card-stat-head">
+              <span>{entry.label}</span>
+              <span>{entry.solved} / {entry.total}</span>
+            </div>
+            <div class="profile-card-track">
+              <span style={`width: ${entry.percent}%`} />
+            </div>
+          </div>
+        ))}
       </div>
       <p>
         I use LeetCode CN for algorithm practice and problem-solving notes.
