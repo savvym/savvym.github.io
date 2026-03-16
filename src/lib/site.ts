@@ -5,6 +5,7 @@ export const SITE_TAGLINE = "";
 export const SITE_AUTHOR = "SavvyM";
 export const SITE_GITHUB = "https://github.com/savvym";
 export const SITE_LINKEDIN = "";
+export const SITE_LEETCODE = "https://leetcode.cn/u/savvym/";
 
 export const NAV_LINKS = [
   { label: "About", href: "/about/" },

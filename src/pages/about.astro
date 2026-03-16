@@ -4,6 +4,7 @@ import {
   SITE_AUTHOR,
   SITE_DESCRIPTION,
   SITE_GITHUB,
+  SITE_LEETCODE,
   SITE_LINKEDIN,
   SITE_TITLE
 } from "../lib/site";
@@ -24,14 +25,26 @@ import {
       This site keeps the content from my older blog, rebuilt into the current
       design and Markdown workflow.
     </p>
-    <p>
-      <img
-        src="https://leetcard.jacoblin.cool/savvym?theme=light&font=M%20PLUS%201&ext=activity&site=cn"
-        alt="SavvyM LeetCode stats"
-        loading="lazy"
-      />
-    </p>
-    <p>
+    <div class="profile-card">
+      <div class="profile-card-label">Coding Profile</div>
+      <div class="profile-card-header">
+        <div>
+          <h2>LeetCode</h2>
+          <p class="profile-card-handle">@savvym</p>
+        </div>
+        <div class="profile-card-mark" aria-hidden="true">LC</div>
+      </div>
+      <p>
+        I use LeetCode CN for algorithm practice and problem-solving notes.
+        Some of the algorithm posts on this blog come from that workflow.
+      </p>
+      <p class="profile-card-actions">
+        <a href={SITE_LEETCODE} target="_blank" rel="noreferrer">Open LeetCode Profile</a>
+      </p>
+    </div>
+    <p class="about-links">
+      <a href={SITE_LEETCODE} target="_blank" rel="noreferrer">LeetCode</a>
+      {" · "}
       <a href={SITE_GITHUB} target="_blank" rel="noreferrer">GitHub</a>
       {SITE_LINKEDIN && (
         <>
