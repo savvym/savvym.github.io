@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "migrate:content": "python3 scripts/migrate_mirror.py",
-    "migrate:hugo": "python3 scripts/migrate_old_hugo_content.py"
+    "migrate:hugo": "python3 scripts/migrate_old_hugo_content.py",
+    "update:leetcode": "python3 scripts/update_leetcode_stats.py --user-slug savvym"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",

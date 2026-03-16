@@ -6,12 +6,6 @@ export const SITE_AUTHOR = "SavvyM";
 export const SITE_GITHUB = "https://github.com/savvym";
 export const SITE_LINKEDIN = "";
 export const SITE_LEETCODE = "https://leetcode.cn/u/savvym/";
-export const SITE_LEETCODE_STATS = {
-  totalSolved: 1087,
-  easy: { solved: 440, total: 670 },
-  medium: { solved: 188, total: 571 },
-  hard: { solved: 459, total: 512 }
-} as const;
 
 export const NAV_LINKS = [
   { label: "About", href: "/about/" },

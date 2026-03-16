@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import leetcodeStats from "../data/leetcode-stats.json";
 import {
   SITE_AUTHOR,
   SITE_DESCRIPTION,
   SITE_GITHUB,
   SITE_LEETCODE,
-  SITE_LEETCODE_STATS,
   SITE_LINKEDIN,
   SITE_TITLE
 } from "../lib/site";
@@ -13,26 +13,32 @@ import {
 const leetcodeBreakdown = [
   {
     label: "Easy",
-    solved: SITE_LEETCODE_STATS.easy.solved,
-    total: SITE_LEETCODE_STATS.easy.total,
+    solved: leetcodeStats.easy.solved,
+    total: leetcodeStats.easy.total,
     tone: "easy"
   },
   {
     label: "Medium",
-    solved: SITE_LEETCODE_STATS.medium.solved,
-    total: SITE_LEETCODE_STATS.medium.total,
+    solved: leetcodeStats.medium.solved,
+    total: leetcodeStats.medium.total,
     tone: "medium"
   },
   {
     label: "Hard",
-    solved: SITE_LEETCODE_STATS.hard.solved,
-    total: SITE_LEETCODE_STATS.hard.total,
+    solved: leetcodeStats.hard.solved,
+    total: leetcodeStats.hard.total,
     tone: "hard"
   }
 ].map((entry) => ({
   ...entry,
   percent: Math.min(100, Math.round((entry.solved / entry.total) * 1000) / 10)
 }));
+
+const lastUpdated = new Date(leetcodeStats.updatedAt).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric"
+});
 ---
 
 <BaseLayout title={`About - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
@@ -51,13 +57,18 @@ const leetcodeBreakdown = [
       <div class="profile-card-header">
         <div>
           <h2>LeetCode</h2>
-          <p class="profile-card-handle">@savvym</p>
+          <p class="profile-card-handle">@{leetcodeStats.userSlug}</p>
         </div>
         <div class="profile-card-mark" aria-hidden="true">LC</div>
       </div>
       <div class="profile-card-total">
-        <div class="profile-card-total-value">{SITE_LEETCODE_STATS.totalSolved}</div>
+        <div class="profile-card-total-value">{leetcodeStats.totalSolved}</div>
         <div class="profile-card-total-label">Problems Solved</div>
+      </div>
+      <div class="profile-card-meta">
+        <span>CN Rank #{leetcodeStats.siteRanking}</span>
+        <span>Rep {leetcodeStats.reputation}</span>
+        <span>Updated {lastUpdated}</span>
       </div>
       <div class="profile-card-stats">
         {leetcodeBreakdown.map((entry) => (

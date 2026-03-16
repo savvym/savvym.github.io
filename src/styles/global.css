@@ -674,6 +674,17 @@ button.tag:hover {
   text-transform: uppercase;
 }
 
+.profile-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+  margin-bottom: 1rem;
+  font-family: "Geist Mono", monospace;
+  font-size: 12px;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
 .profile-card-stats {
   display: grid;
   gap: 0.7rem;

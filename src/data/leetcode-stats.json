@@ -1,0 +1,20 @@
+{
+  "userSlug": "savvym",
+  "realName": "SavvyM",
+  "reputation": 41,
+  "siteRanking": 3946,
+  "updatedAt": "2026-03-16T09:26:59Z",
+  "easy": {
+    "solved": 433,
+    "total": 1052
+  },
+  "medium": {
+    "solved": 724,
+    "total": 2224
+  },
+  "hard": {
+    "solved": 253,
+    "total": 985
+  },
+  "totalSolved": 1410
+}
